@@ -1,6 +1,4 @@
-Bilkul, ye raha **copy-paste ready `README.md`**:
 
-````markdown
 # 🎵 Music Player – React
 
 A clean and responsive **Music Player Web Application** built with **React** as the second internship task at **Rhombix Technologies**.
