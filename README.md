@@ -126,6 +126,3 @@ Some features that can be added in the future:
 Developed as **Task 2 during my internship at Rhombix Technologies**.
 
 ---
-
-```
-```
