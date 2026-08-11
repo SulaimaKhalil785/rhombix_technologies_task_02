@@ -15,12 +15,18 @@ function App() {
   const [category, setCategory] = useState("All");
 
   const audioRef = useRef(new Audio(songsData[0].src));
+  const isPlayingRef = useRef(isPlaying);
+
+  useEffect(() => {
+    isPlayingRef.current = isPlaying;
+  }, [isPlaying]);
 
   useEffect(() => {
     audioRef.current.src = currentSong.src;
+    audioRef.current.currentTime = 0;
 
-    if (isPlaying) {
-      audioRef.current.play();
+    if (isPlayingRef.current) {
+      audioRef.current.play().catch(() => setIsPlaying(false));
     }
   }, [currentSong]);
 
@@ -29,7 +35,7 @@ function App() {
       audioRef.current.pause();
       setIsPlaying(false);
     } else {
-      audioRef.current.play();
+      audioRef.current.play().catch(() => setIsPlaying(false));
       setIsPlaying(true);
     }
   };
@@ -85,6 +91,7 @@ function App() {
         songs={filteredSongs}
         currentSong={currentSong}
         setCurrentSong={setCurrentSong}
+        isPlaying={isPlaying}
       />
 
       <PlayerControls
